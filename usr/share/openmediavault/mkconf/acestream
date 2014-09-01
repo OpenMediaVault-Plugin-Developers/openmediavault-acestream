@@ -4,10 +4,9 @@
   
   . /etc/default/openmediavault
   . /usr/share/openmediavault/scripts/helper-functions
+  
  #Stop the process
- pid=`ps aux|grep acehttp.py`
- set -- $pid
- kill -9 $2
+ kill $(ps aux | grep '[pytho]n acehttp.py' | awk '{print $2}')
  
  #Write config file
 cat <<EOF > /home/aceproxy/aceconf.py
