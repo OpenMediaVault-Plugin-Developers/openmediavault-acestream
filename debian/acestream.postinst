@@ -1,0 +1,24 @@
+!/bin/sh
+set -e
+. /etc/default/openmediavault
+. /usr/share/openmediavault/scripts/helper-functions
+case "$1" in
+    configure)
+	if ! omv_config_exists "/config/services/acestream"; then
+	    echo "Initialize configuration"
+	    object="<enable>0</enable>"
+	    object="${object}<acestreamhost>127.0.0.1</acestreamhost>"
+		object="${object}<acestreamport>62062</acestreamport>"
+		object="${object}<aceproxyhost>127.0.0.1</aceproxyhost>"
+		object="${object}<aceproxyport>8000</aceproxyport>"
+	    omv_config_add_element "/config/services" "acestream" "${object}" true
+	fi
+    ;;
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+exit 0
