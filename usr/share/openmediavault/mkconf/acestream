@@ -5,9 +5,15 @@
   . /etc/default/openmediavault
   . /usr/share/openmediavault/scripts/helper-functions
   
- #Stop the process
+ #Stop the proxy
  kill $(ps aux | grep '[pytho]n acehttp.py' | awk '{print $2}')
+ #Stop the engine
+ kill $(ps aux | grep '[acestrea]mengine --client-console' | awk '{print $2}')
  
+ # Enable/disable service
+ if [ "$(omv_config_get "//services/acestream/enable")" != "1" ]; then
+    exit 0
+ fi
  #Write config file
 cat <<EOF > /home/aceproxy/aceconf.py
 '''
@@ -30,9 +36,9 @@ class AceConfig(object):
     # Change this if you use remote Ace Stream Engine
     # Remember that by default Ace Stream Engine listens only
     # Local host, so start it with --bind-all parameter
-    acehost = '$(omv_config_get "//services/acestream/acestreamhost")'
+    acehost = '$(omv_config_get "//services/acestream/streamhost")'
     # Ace Stream Engine port (autodetect for Windows)
-    aceport = $(omv_config_get "//services/acestream/acestreamport")
+    aceport = $(omv_config_get "//services/acestream/streamport")
     # Ace Stream age parameter (LT_13, 13_17, 18_24, 25_34, 35_44, 45_54,
     # 55_64, GT_65)
     aceage = AceConst.AGE_18_24
@@ -50,9 +56,9 @@ class AceConfig(object):
     # ----------------------------------------------------
     #
     # HTTP Server host
-    httphost = '$(omv_config_get "//services/acestream/aceproxyhost")'
+    httphost = '$(omv_config_get "//services/acestream/proxyhost")'
     # HTTP Server port
-    httpport = $(omv_config_get "//services/acestream/aceproxyport")
+    httpport = $(omv_config_get "//services/acestream/proxyport")
     # If started as root, drop privileges to this user.
     # Leave empty to disable.
     aceproxyuser = ''
@@ -176,4 +182,6 @@ class AceConfig(object):
 EOF
 
 #Start up the proxy again
-nohup python /home/aceproxy/acehttp.py 0<&- &> /home/aceproxy/proxy.log &
+nohup python /home/aceproxy/acehttp.py 0<&- &> /var/log/acestreamproxy.log &
+
+nohup acestreamengine --client-console 0<&- &> /var/log/acestreamengine.log &
