@@ -20,7 +20,7 @@ getFormItems: function() { // Generic function for this class that initializes t
          },
          {
          xtype: "textfield",
-         name: "aceproxyhost",
+         name: "proxyhost",
          fieldLabel: "Bind Address",
 		 vtype: "IPv4Net",
 		 value      : "127.0.0.1",
@@ -31,7 +31,7 @@ getFormItems: function() { // Generic function for this class that initializes t
          },
          {
          xtype: "numberfield",
-         name: "aceproxyport",
+         name: "proxyport",
          fieldLabel: "Port",
 		 vtype: "port",
 		 minValue      : 0,
@@ -44,7 +44,7 @@ getFormItems: function() { // Generic function for this class that initializes t
          },
          {
          xtype: "textfield",
-         name: "acestreamhost",
+         name: "streamhost",
          fieldLabel: "AceStream Engine IP",
 		 vtype: "IPv4Net",
 		 value      : "127.0.0.1",
@@ -55,7 +55,7 @@ getFormItems: function() { // Generic function for this class that initializes t
          },
          {
          xtype: "numberfield",
-         name: "acestreamport",
+         name: "streamport",
 		 minValue      : 0,
          maxValue      : 65535,
          fieldLabel: "AceStream Engine Port",

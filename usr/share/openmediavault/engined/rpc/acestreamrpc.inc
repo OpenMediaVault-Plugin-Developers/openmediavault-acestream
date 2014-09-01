@@ -24,10 +24,10 @@ class OMVRpcServiceAceStream extends OMVRpcServiceAbstract {
 			throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,$xpath);
 		}
 		$object['enable'] = boolval($object['enable']);
-		$object['acestreamhost'] = $object['acestreamhost'];
-		$object['acestreamport'] = intval($object['acestreamport']);
-		$object['aceproxyhost'] = $object['aceproxyhost'];
-		$object['aceproxyport'] = intval($object['aceproxyport']);
+		$object['streamhost'] = $object['streamhost'];
+		$object['streamport'] = intval($object['streamport']);
+		$object['proxyhost'] = $object['proxyhost'];
+		$object['proxyport'] = intval($object['proxyport']);
 		return $object;
 	}
 
@@ -39,10 +39,10 @@ class OMVRpcServiceAceStream extends OMVRpcServiceAbstract {
 			"type":"object",
 			"properties":{
 				"enable":{"type":"boolean"},
-				"acestreamhost":{"type":"string"},
-				"acestreamport":{"type":"integer"},
-				"aceproxyhost":{"type":"string"},
-				"aceproxyport":{"type":"integer"},
+				"streamhost":{"type":"string"},
+				"streamport":{"type":"integer"},
+				"proxyhost":{"type":"string"},
+				"proxyport":{"type":"integer"},
 				}
 			}'
 		);
@@ -57,10 +57,10 @@ class OMVRpcServiceAceStream extends OMVRpcServiceAbstract {
 		// Update the configuration object. 
 		$object = array(
 			"enable" => array_boolval($params, 'enable'),
-			"acestreamhost" => $params['acestreamhost'],
-			"acestreamport" => intval($params['acestreamport']),
-			"aceproxyhost" => $params['aceproxyhost'],
-			"aceproxyport" => intval($params['aceproxyport']),
+			"streamhost" => $params['streamhost'],
+			"streamport" => intval($params['streamport']),
+			"proxyhost" => $params['proxyhost'],
+			"proxyport" => intval($params['proxyport']),
 		);
 		// Update the xmlConfig file. If it fails then generate an error
 		if(FALSE === $xmlConfig->replace("//services/acestream", $object)) {
