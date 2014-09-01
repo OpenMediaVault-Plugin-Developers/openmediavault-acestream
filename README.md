@@ -1,6 +1,4 @@
-Skeleton
+AceStream
 ========
 
-This is a skeleton project for OpenMediaVault plugins. Remove, add and edit files as needed.
-
-For automatic setup, cd to directory and execute ./configure.sh
+AceStream engine and proxy. Enables the viewing of AceStreams on standard media players
