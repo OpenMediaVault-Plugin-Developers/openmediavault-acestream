@@ -1,36 +1,59 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+# General
+*.tmp
+*.bak
+*.swp
+*~
 
-# Folder config file
-Desktop.ini
+# Eclipse
+.project
+.metadata
+.settings/
+*.launch
+.buildpath
+*.pydevproject
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+# JetBrains
+.idea/
+*.ipr
+*.iws
+*.iml
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+# Netbeans
+nbproject/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
 
-# =========================
-# Operating System Files
-# =========================
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
 
-# OSX
-# =========================
+# Vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
 
+# SVN
+.svn/
+
+# Mac
 .DS_Store
 .AppleDouble
 .LSOverride
 
-# Icon must ends with two \r.
-Icon
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
+# OpenMediaVault / Debian
+debian/openmediavault-*
+debian/files
+debian/*.debhelper.log
+debian/*.debhelper
+debian/*substvars
