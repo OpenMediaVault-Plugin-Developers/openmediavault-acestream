@@ -36,14 +36,13 @@ class OMVRpcServiceAceStream extends OMVRpcServiceAbstract {
 		$this->validateMethodContext($context, array("role" => OMV_ROLE_ADMINISTRATOR)); 
 		
 		$this->validateMethodParams($params, '{
-			"type":"object",
-			"properties":{
-				"enable":{"type":"boolean"},
-				"streamhost":{"type":"string"},
-				"streamport":{"type":"integer"},
-				"proxyhost":{"type":"string"},
-				"proxyport":{"type":"integer"},
-				}
+		"type":"object",
+		"properties":{
+			"enable":{"type":"boolean"},
+			"streamhost":{"type":"string"},
+			"streamport":{"type":"integer"},
+			"proxyhost":{"type":"string"},
+			"proxyport":{"type":"integer"}}
 			}'
 		);
 		
