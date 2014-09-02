@@ -1,4 +1,4 @@
-  #!/bin/sh
+   #!/bin/sh
   
   set -e
   
@@ -6,10 +6,15 @@
   . /usr/share/openmediavault/scripts/helper-functions
   
  #Stop the proxy
- kill $(ps aux | grep '[pytho]n acehttp.py' | awk '{print $2}')
+ proxypid=$(ps aux | grep '[pytho]n acehttp.py' | awk '{print $2}')
+ if test -n "$proxypid"; then
+  kill $proxypid
+ fi
  #Stop the engine
- kill $(ps aux | grep '[acestrea]mengine --client-console' | awk '{print $2}')
- 
+ acestreampid=$(ps aux | grep '[acestrea]mengine --client-console' | awk '{print $2}')
+ if test -n "$acestreampid"; then
+ kill $acestreampid
+ fi
  # Enable/disable service
  if [ "$(omv_config_get "//services/acestream/enable")" != "1" ]; then
     exit 0
