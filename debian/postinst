@@ -7,10 +7,10 @@ case "$1" in
 	if ! omv_config_exists "/config/services/acestream"; then
 	    echo "Initialize configuration"
 	    object="<enable>0</enable>"
-	    object="${object}<acestreamhost>127.0.0.1</acestreamhost>"
-		object="${object}<acestreamport>62062</acestreamport>"
-		object="${object}<aceproxyhost>127.0.0.1</aceproxyhost>"
-		object="${object}<aceproxyport>8000</aceproxyport>"
+	    object="${object}<streamhost>127.0.0.1</acestreamhost>"
+		object="${object}<streamport>62062</acestreamport>"
+		object="${object}<proxyhost>127.0.0.1</aceproxyhost>"
+		object="${object}<proxyport>8000</aceproxyport>"
 	    omv_config_add_element "/config/services" "acestream" "${object}" true
 	fi
     ;;
