@@ -8,12 +8,12 @@
  #Stop the proxy
  proxypid=$(ps aux | grep '[pytho]n acehttp.py' | awk '{print $2}')
  if test -n "$proxypid"; then
-  kill $proxypid
+  kill -9 $proxypid
  fi
  #Stop the engine
  acestreampid=$(ps aux | grep '[acestrea]mengine --client-console' | awk '{print $2}')
  if test -n "$acestreampid"; then
- kill $acestreampid
+ kill -9 $acestreampid
  fi
  # Enable/disable service
  if [ "$(omv_config_get "//services/acestream/enable")" != "1" ]; then

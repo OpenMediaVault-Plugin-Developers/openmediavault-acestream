@@ -36,15 +36,16 @@ class OMVRpcServiceAceStream extends OMVRpcServiceAbstract {
 		$this->validateMethodContext($context, array("role" => OMV_ROLE_ADMINISTRATOR)); 
 		
 		$this->validateMethodParams($params, '{
-		"type":"object",
-		"properties":{
-			"enable":{"type":"boolean"},
-			"streamhost":{"type":"string"},
-			"streamport":{"type":"integer"},
-			"proxyhost":{"type":"string"},
-			"proxyport":{"type":"integer"}}
-			}'
-		);
+			"type":"object",
+			"properties":{
+				"enable":{"type":"boolean"},
+				"streamhost":{"type":"string"},
+				"streamport":{"type":"integer"},
+				"proxyhost":{"type":"string"},
+				"proxyport":{"type":"integer"}
+			}
+			}
+		');
 		
 		$xpath = "//services/acestream"; // Structure of the xml schema
 		$oldObject = $xmlConfig->get($xpath); // Read data from the xmlConfig file
