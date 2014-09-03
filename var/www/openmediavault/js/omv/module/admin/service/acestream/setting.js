@@ -43,6 +43,7 @@ getFormItems: function() { // Generic function for this class that initializes t
                 }]
          }]
       },
+	  {
       xtype: "fieldset", // Type of the item
       title: _("VLC settings"), // Text that is shown on the top edge of the fieldset
       fieldDefaults: {
