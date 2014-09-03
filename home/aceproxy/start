@@ -1,0 +1,5 @@
+tmux new -d -s aceproxy
+tmux send -t aceproxy "python /home/aceproxy/acehttp.py"
+
+tmux new -d -s aceengine
+tmux send -t aceproxy "acestreamengine --client-console"
