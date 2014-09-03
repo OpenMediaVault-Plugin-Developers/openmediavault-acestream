@@ -24,10 +24,14 @@ class OMVRpcServiceAceStream extends OMVRpcServiceAbstract {
 			throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,$xpath);
 		}
 		$object['enable'] = boolval($object['enable']);
-		$object['streamhost'] = $object['streamhost'];
-		$object['streamport'] = intval($object['streamport']);
 		$object['proxyhost'] = $object['proxyhost'];
 		$object['proxyport'] = intval($object['proxyport']);
+		
+		$object['vlcuse'] = boolval($object['vlcuse']);
+		$object['vlchost'] = $object['vlchost'];
+		$object['vlcport'] = intval($object['vlcport']);
+		$object['vlcoutport'] = intval($object['vlcoutport']);
+		$object['vlcpass'] = $object['vlcpass'];
 		return $object;
 	}
 
@@ -39,10 +43,13 @@ class OMVRpcServiceAceStream extends OMVRpcServiceAbstract {
 			"type":"object",
 			"properties":{
 				"enable":{"type":"boolean"},
-				"streamhost":{"type":"string"},
-				"streamport":{"type":"integer"},
 				"proxyhost":{"type":"string"},
-				"proxyport":{"type":"integer"}
+				"proxyport":{"type":"integer"},
+				"vlcuse":{"type":"boolean"},
+				"vlchost":{"type":"string"},
+				"vlcport":{"type":"integer"},
+				"vlcpass":{"type":"string"},
+				"vlcoutport":{"type":"integer"}
 			}
 			}
 		');
@@ -57,10 +64,13 @@ class OMVRpcServiceAceStream extends OMVRpcServiceAbstract {
 		// Update the configuration object. 
 		$object = array(
 			"enable" => array_boolval($params, 'enable'),
-			"streamhost" => $params['streamhost'],
-			"streamport" => intval($params['streamport']),
 			"proxyhost" => $params['proxyhost'],
 			"proxyport" => intval($params['proxyport']),
+			"vlcuse" => array_boolval($params['vlcuse']),
+			"vlchost" => $params['vlchost'],
+			"vlcport" => intval($params['vlcport']),
+			"vlcpass" => $params['vlcpass'],
+			"vlcoutport" => intval($params['vlcoutport']),
 		);
 		// Update the xmlConfig file. If it fails then generate an error
 		if(FALSE === $xmlConfig->replace("//services/acestream", $object)) {

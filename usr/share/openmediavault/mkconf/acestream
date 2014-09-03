@@ -8,18 +8,23 @@
  #Stop the proxy
  proxypid=$(ps aux | grep '[pytho]n acehttp.py' | awk '{print $2}')
  if test -n "$proxypid"; then
-  kill -9 $proxypid
+  kill $proxypid
   tmux kill-session -t aceproxy
  fi
  #Stop the engine
  acestreampid=$(ps aux | grep '[acestrea]mengine --client-console' | awk '{print $2}')
  if test -n "$acestreampid"; then
- kill -9 $acestreampid
- tmux kill-session -t aceengine
+	kill $acestreampid
+	tmux kill-session -t acehttp
  fi
  # Enable/disable service
  if [ "$(omv_config_get "//services/acestream/enable")" != "1" ]; then
     exit 0
+ fi
+ 
+ vlcuse="False"
+ if [ "$(omv_config_get "//services/acestream/enable")" != "1" ]; then
+    vlcuse="True"
  fi
  #Write config file
 cat <<EOF > /home/aceproxy/aceconf.py
@@ -92,15 +97,15 @@ class AceConfig(object):
     # To use this, you should install VLC first
     # And run it with:
     # vlc -I telnet --clock-jitter 0 --network-caching 500 --telnet-pass admin
-    vlcuse = False
+    vlcuse = $VLCUSE
     # VLC host
-    vlchost = '127.0.0.1'
+    vlchost = '$(omv_config_get "//services/acestream/vlchost")'
     # VLC telnet interface port
-    vlcport = 4212
+    vlcport = $(omv_config_get "//services/acestream/vlcport")
     # VLC streaming port (you shouldn't set it in VLC itself)
-    vlcoutport = 8081
+    vlcoutport = $(omv_config_get "//services/acestream/vlcoutport")
     # VLC telnet interface password
-    vlcpass = 'admin'
+    vlcpass = '$(omv_config_get "//services/acestream/vlcpass")'
     # Pre-access (HTTP) VLC parameters
     # You can add transcode options here
     # Something like #transcode{acodec=mpga,ab=128,channels=2,samplerate=44100}
@@ -189,4 +194,6 @@ class AceConfig(object):
 EOF
 
 #Start up the proxy again
-/bin/bash /home/aceproxy/start
+nohup python /home/aceproxy/acehttp.py 0<&- &> /var/log/acestreamproxy.log &
+
+nohup acestreamengine --client-console 0<&- &> /var/log/acestreamengine.log &

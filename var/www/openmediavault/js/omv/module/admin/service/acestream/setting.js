@@ -41,32 +41,72 @@ getFormItems: function() { // Generic function for this class that initializes t
                     ptype : "fieldinfo",
                     text  : "Port to listen on"
                 }]
+         }]
+      },
+      xtype: "fieldset", // Type of the item
+      title: _("VLC settings"), // Text that is shown on the top edge of the fieldset
+      fieldDefaults: {
+         labelSeparator: ""
+      },
+      items: [{ // These items are inside the fieldset item defined above
+         xtype: "checkbox", // Type of the item 
+         name: "vlcuse", // Individual name of the item
+         fieldLabel: _("Enable VLC"), // Text that is shown next to the checkbox. Keep this under 15 characters
+         checked: false,
+		 plugins    : [{
+                    ptype : "fieldinfo",
+                    text  : "Enable proxy to use vlc if installed."
+                }]
          },
          {
          xtype: "textfield",
-         name: "streamhost",
-         fieldLabel: "AceStream Engine IP",
+         name: "vlchost",
+         fieldLabel: "VLC host",
 		 vtype: "IPv4Net",
 		 value      : "127.0.0.1",
 		 plugins    : [{
                     ptype : "fieldinfo",
-                    text  : "IP address of the AceStream Engine. Use 127.0.0.1 for local."
+                    text  : "IP address of VLC. Use 0.0.0.0 for all host IPs."
                 }]
          },
          {
          xtype: "numberfield",
-         name: "streamport",
+         name: "vlcport",
+         fieldLabel: "VLC Port",
+		 vtype: "port",
 		 minValue      : 0,
          maxValue      : 65535,
-         fieldLabel: "AceStream Engine Port",
-		 vtype: "port",
-		 value      : "62062",
+		 value      : "8000",
 		 plugins    : [{
                     ptype : "fieldinfo",
-                    text  : "Port of the AceStream Engine. Default 62062"
+                    text  : "Port vlc is listening on"
+                }]
+         },
+         {
+         xtype: "numberfield",
+         name: "vlcoutport",
+         fieldLabel: "VLC Output Port",
+		 vtype: "port",
+		 minValue      : 0,
+         maxValue      : 65535,
+		 value      : "8000",
+		 plugins    : [{
+                    ptype : "fieldinfo",
+                    text  : "Port VLC outputs the stream on"
+                }]
+         },
+         {
+         xtype: "textfield",
+         name: "vlcpass",
+         fieldLabel: "AceStream Engine Port",
+		 value      : "admin",
+		 plugins    : [{
+                    ptype : "fieldinfo",
+                    text  : "VLC Telnet password"
                 }]
          }]
-      }];
+      }
+	  ];
 }
 });
 
