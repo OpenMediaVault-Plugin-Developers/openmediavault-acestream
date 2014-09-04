@@ -23,7 +23,7 @@
  fi
  
  vlcuse="False"
- if [ "$(omv_config_get "//services/acestream/vlcuse")" != "1" ]; then
+ if [ "$(omv_config_get "//services/acestream/vlcuse")" != "0" ]; then
     vlcuse="True"
  fi
  #Write config file
@@ -97,7 +97,7 @@ class AceConfig(object):
     # To use this, you should install VLC first
     # And run it with:
     # vlc -I telnet --clock-jitter 0 --network-caching 500 --telnet-pass admin
-    vlcuse = $VLCUSE
+    vlcuse = $vlcuse
     # VLC host
     vlchost = '$(omv_config_get "//services/acestream/vlchost")'
     # VLC telnet interface port
