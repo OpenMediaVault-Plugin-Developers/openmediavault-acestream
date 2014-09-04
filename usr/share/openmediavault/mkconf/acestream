@@ -23,7 +23,7 @@
  fi
  
  vlcuse="False"
- if [ "$(omv_config_get "//services/acestream/enable")" != "1" ]; then
+ if [ "$(omv_config_get "//services/acestream/vlcuse")" != "1" ]; then
     vlcuse="True"
  fi
  #Write config file

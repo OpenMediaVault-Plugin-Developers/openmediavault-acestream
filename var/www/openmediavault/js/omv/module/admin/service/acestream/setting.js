@@ -90,7 +90,7 @@ getFormItems: function() { // Generic function for this class that initializes t
 		 vtype: "port",
 		 minValue      : 0,
          maxValue      : 65535,
-		 value      : "8000",
+		 value      : "8082",
 		 plugins    : [{
                     ptype : "fieldinfo",
                     text  : "Port VLC outputs the stream on"
@@ -99,7 +99,7 @@ getFormItems: function() { // Generic function for this class that initializes t
          {
          xtype: "textfield",
          name: "vlcpass",
-         fieldLabel: "AceStream Engine Port",
+         fieldLabel: "VLC Telnet password",
 		 value      : "admin",
 		 plugins    : [{
                     ptype : "fieldinfo",

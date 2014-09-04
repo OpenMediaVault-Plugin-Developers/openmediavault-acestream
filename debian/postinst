@@ -9,11 +9,11 @@ case "$1" in
 	    object="<enable>0</enable>"
 		object="${object}<proxyhost>127.0.0.1</proxyhost>"
 		object="${object}<proxyport>8000</proxyport>"
-		object="${object}<vlcuse>8000</vlcuse>"
+		object="${object}<vlcuse>0</vlcuse>"
 		object="${object}<vlchost>127.0.0.1</vlchost>"
 		object="${object}<vlcport>4212</vlcport>"
 		object="${object}<vlcpass>admin</vlcpass>"
-		object="${object}<vlcoutport>8081</vlcoutport>"
+		object="${object}<vlcoutport>8082</vlcoutport>"
 	    omv_config_add_element "/config/services" "acestream" "${object}" true
 	fi
     ;;
