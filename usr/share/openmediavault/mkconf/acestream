@@ -15,7 +15,7 @@
  acestreampid=$(ps aux | grep '[acestrea]mengine --client-console' | awk '{print $2}')
  if test -n "$acestreampid"; then
 	kill $acestreampid
-	tmux kill-session -t acehttp
+	tmux kill-session -t aceengine
  fi
  # Enable/disable service
  if [ "$(omv_config_get "//services/acestream/enable")" != "1" ]; then
@@ -194,6 +194,4 @@ class AceConfig(object):
 EOF
 
 #Start up the proxy again
-nohup python /home/aceproxy/acehttp.py 0<&- &> /var/log/acestreamproxy.log &
-
-nohup acestreamengine --client-console 0<&- &> /var/log/acestreamengine.log &
+/home/aceproxy/start
