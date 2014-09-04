@@ -6,7 +6,7 @@
   . /usr/share/openmediavault/scripts/helper-functions
   
  #Stop the proxy
- proxypid=$(ps aux | grep '[pytho]n acehttp.py' | awk '{print $2}')
+ proxypid=$(ps aux | grep '[ace]http.py' | awk '{print $2}')
  if test -n "$proxypid"; then
   kill $proxypid
   tmux kill-session -t aceproxy
