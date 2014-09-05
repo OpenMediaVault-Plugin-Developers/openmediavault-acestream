@@ -4,3 +4,7 @@ tmux send -t aceproxy "python /home/aceproxy/acehttp.py" ENTER
 tmux new -d -s aceengine
 tmux send -t aceengine "acestreamengine --client-console" ENTER
 
+sleep 3
+cat <<EOF > /var/run/acestream.pid
+$(ps aux | grep '[ace]http.py' | awk '{print $2}')
+EOF

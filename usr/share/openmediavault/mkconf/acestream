@@ -4,7 +4,7 @@
   
   . /etc/default/openmediavault
   . /usr/share/openmediavault/scripts/helper-functions
-  
+  [ -f /var/run/acestream.pid ] && rm /var/run/acestream.pid
  #Stop the proxy
  proxypid=$(ps aux | grep '[ace]http.py' | awk '{print $2}')
  if test -n "$proxypid"; then

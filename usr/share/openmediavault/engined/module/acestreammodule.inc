@@ -6,12 +6,10 @@
   class OMVModuleAceStream extends OMVModuleServiceAbstract
 	  implements OMVINotifyListener, OMVIModuleServiceStatus {
   
-	  public function getName() { return "AceStream";} // Module name. Same as in RPC and .js files
-		
 		private function getPluginName(){
-			return strtolower($this->getName();
+			return strtolower($this->getName());
 		}
-		private function getName() {
+		public function getName() {
 			return "Ace Stream";
 		}
 		private function getEventMessagePath() {
@@ -53,6 +51,11 @@
 		  if(is_null($object)) {
 			  throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,$xpath);
 		  }
+		  // If pid exists assume server is running
+		  $running = false;
+          if (file_exists("/var/run/acestream.pid")) {
+			$running = true;
+		  }
 		  // Return information to the web GUI
 		  // Information is shown in Diagnostics/Services
 		  $initd = new OMVSysVInitScript($this->getName());
@@ -60,7 +63,7 @@
 			  "name" => $this->getName(),
 			  "title" => gettext("Ace Stream"),
 			  "enabled" => boolval($object['enable']),
-			  "running" => ("running")
+			  "running" => $running
 		  );
 	  }
   //*****************************************************************	
