@@ -7,7 +7,13 @@
 	  implements OMVINotifyListener, OMVIModuleServiceStatus {
   
 	  public function getName() { return "AceStream";} // Module name. Same as in RPC and .js files
-  
+		
+		private function getPluginName(){
+			return strtolower($this->getName();
+		}
+		private function getName() {
+			return "Ace Proxy";
+		}
   //*****************************************************************	
   //*****************************************************************
   //*****************************************************************
@@ -43,6 +49,7 @@
 		  }
 		  // Return information to the web GUI
 		  // Information is shown in Diagnostics/Services
+		  $initd = new OMVSysVInitScript($this->getName());
 		  return array(
 			  "name" => $this->getName(),
 			  "title" => gettext("Ace Stream"),
