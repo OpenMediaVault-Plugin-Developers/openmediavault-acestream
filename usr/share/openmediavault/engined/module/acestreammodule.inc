@@ -12,7 +12,13 @@
 			return strtolower($this->getName();
 		}
 		private function getName() {
-			return "Ace Proxy";
+			return "Ace Stream";
+		}
+		private function getEventMessagePath() {
+			return "org.openmediavault.services.acestream";
+		}
+		private function getXPath() {
+			return "//services/acestream";
 		}
   //*****************************************************************	
   //*****************************************************************
