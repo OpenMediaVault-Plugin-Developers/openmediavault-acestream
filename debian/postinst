@@ -1,4 +1,4 @@
-!/bin/sh
+#!/bin/sh
 set -e
 . /etc/default/openmediavault
 . /usr/share/openmediavault/scripts/helper-functions
