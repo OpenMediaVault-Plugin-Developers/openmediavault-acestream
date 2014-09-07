@@ -6,18 +6,8 @@
   class OMVModuleAceStream extends OMVModuleServiceAbstract
 	  implements OMVINotifyListener, OMVIModuleServiceStatus {
   
-		private function getPluginName(){
-			return strtolower($this->getName());
-		}
-		public function getName() {
-			return "Ace Stream";
-		}
-		private function getEventMessagePath() {
-			return "org.openmediavault.services.acestream";
-		}
-		private function getXPath() {
-			return "//services/acestream";
-		}
+	  public function getName() { return "AceStream";} // Module name. Same as in RPC and .js files
+  
   //*****************************************************************	
   //*****************************************************************
   //*****************************************************************
@@ -58,7 +48,6 @@
 		  }
 		  // Return information to the web GUI
 		  // Information is shown in Diagnostics/Services
-		  $initd = new OMVSysVInitScript($this->getName());
 		  return array(
 			  "name" => $this->getName(),
 			  "title" => gettext("Ace Stream"),
