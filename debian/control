@@ -7,5 +7,5 @@ Standards-Version: 3.9.3
 
 Package: openmediavault-acestream
 Architecture: all
-Depends: openmediavault (>= 0.6.0.6), python-gevent, tmux, python, ${misc:Depends}
+Depends: openmediavault (>= 0.6.0.6), python-gevent, tmux, python, acestream-engine, ${misc:Depends}
 Description: AceStream engine and proxy for OpenMediaVault. View Acestream links in a normal media player
