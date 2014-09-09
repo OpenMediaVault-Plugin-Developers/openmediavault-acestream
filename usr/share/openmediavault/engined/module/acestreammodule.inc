@@ -58,7 +58,7 @@ class OMVModuleAceStream extends OMVModuleServiceAbstract implements
     {
         global $xmlConfig;
   
-        Get the configuration object.
+        // Get the configuration object.
         $object = $xmlConfig->get($this->getXPath());
 
         if (is_null($object)) {
