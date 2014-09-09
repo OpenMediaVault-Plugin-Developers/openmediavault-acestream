@@ -1,10 +1,15 @@
-tmux new -d -s aceproxy
-tmux send -t aceproxy "python /home/aceproxy/acehttp.py" ENTER
+#Start up a tmux session for the aceproxy
+	tmux new -d -s aceproxy
+#Start ace proxy in the tmux session created above
+	tmux send -t aceproxy "python /home/aceproxy/acehttp.py" ENTER
+#Start up a tmux session for the ace engine
+	tmux new -d -s aceengine
+#Start up the acestream engine in client console mode in the session just created
+	tmux send -t aceengine "acestreamengine --client-console" ENTER
 
-tmux new -d -s aceengine
-tmux send -t aceengine "acestreamengine --client-console" ENTER
-
-sleep 3
-cat <<EOF > /var/run/acestream.pid
-$(ps aux | grep '[ace]http.py' | awk '{print $2}')
-EOF
+#Sleep for 3 secs
+	sleep 3
+#Write pid file containing pid of the aceproxy process
+	cat <<EOF > /var/run/acestream.pid
+	$(ps aux | grep '[ace]http.py' | awk '{print $2}')
+	EOF
