@@ -1,22 +1,23 @@
-﻿Ext.define("OMV.module.admin.service.acestream.Settings", { // Define a new class
-extend: "OMV.workspace.form.Panel", // What is the base type of this class
+﻿Ext.define("OMV.module.admin.service.acestream.Settings", { // Define the class
+extend: "OMV.workspace.form.Panel", // Base type of the class
 
-rpcService: "AceStream", // Remote Procedure Call 
-rpcGetMethod: "getSettings", // Remote Procedure Call 
-rpcSetMethod: "setSettings", // Remote Procedure Call 
+rpcService: "AceStream", // set name for rpc service
+rpcGetMethod: "getSettings", // name for the function in the rpc that gets the settings
+rpcSetMethod: "setSettings", // name for the function in the rpc that saves the settings
 
-getFormItems: function() { // Generic function for this class that initializes the GUI
-   return [{
-      xtype: "fieldset", // Type of the item
-      title: _("Ace Proxy settings"), // Text that is shown on the top edge of the fieldset
+getFormItems: function() { //initialize the GUI
+   return [
+	{
+      xtype: "fieldset",
+      title: _("Ace Proxy settings"),
       fieldDefaults: {
          labelSeparator: ""
       },
-      items: [{ // These items are inside the fieldset item defined above
-         xtype: "checkbox", // Type of the item 
-         name: "enable", // Individual name of the item
-         fieldLabel: _("Enable"), // Text that is shown next to the checkbox. Keep this under 15 characters
-         checked: false // Default value if no settings have been applied yet, Try to change this to true
+      items: [{ 
+         xtype: "checkbox",
+         name: "enable",
+         fieldLabel: _("Enable"),
+         checked: false
          },
          {
          xtype: "textfield",
@@ -44,15 +45,15 @@ getFormItems: function() { // Generic function for this class that initializes t
          }]
       },
 	  {
-      xtype: "fieldset", // Type of the item
-      title: _("VLC settings"), // Text that is shown on the top edge of the fieldset
+      xtype: "fieldset",
+      title: _("VLC settings"),
       fieldDefaults: {
          labelSeparator: ""
       },
-      items: [{ // These items are inside the fieldset item defined above
-         xtype: "checkbox", // Type of the item 
-         name: "vlcuse", // Individual name of the item
-         fieldLabel: _("Enable VLC"), // Text that is shown next to the checkbox. Keep this under 15 characters
+      items: [{
+         xtype: "checkbox",
+         name: "vlcuse", 
+         fieldLabel: _("Enable VLC"),
          checked: false,
 		 plugins    : [{
                     ptype : "fieldinfo",
@@ -112,10 +113,12 @@ getFormItems: function() { // Generic function for this class that initializes t
 });
 
 // Register the class that is defined above
-OMV.WorkspaceManager.registerPanel({
-id: "Settings", //Individual id
-path: "/service/acestream", // Parent folder in the navigation view
-text: _("Ace Stream"), // Text to show on the tab , Shown only if multiple form panels
-position: 10, // Horizontal position of this tab. Use when you have multiple tabs
-className: "OMV.module.admin.service.acestream.Settings" // Same class name as defined above
-});
+OMV.WorkspaceManager.registerPanel(
+	{
+		id: "Settings", //Id of the class
+		path: "/service/acestream", // Parent folder in the navigation view
+		text: _("Ace Stream"), // Text to show on the tab
+		position: 10,
+		className: "OMV.module.admin.service.acestream.Settings" // Same class name as defined above
+	}
+);
