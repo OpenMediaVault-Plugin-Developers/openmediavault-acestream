@@ -111,7 +111,7 @@ class OMVRpcServiceAceStream extends OMVRpcServiceAbstract
             "enable"     => array_boolval($params, 'enable'),
             "proxyhost"  => $params['proxyhost'],
             "proxyport"  => intval($params['proxyport']),
-            "vlcuse"     => array_boolval($params['vlcuse']),
+            "vlcuse"     => array_boolval($params, "vlcuse"),
             "vlchost"    => $params['vlchost'],
             "vlcport"    => intval($params['vlcport']),
             "vlcpass"    => $params['vlcpass'],
