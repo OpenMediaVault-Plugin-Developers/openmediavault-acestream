@@ -36,7 +36,7 @@ set -e
 	vlcuse="True"
  fi
  #Write config file for ace proxy
-cat <<EOF > /home/aceproxy/aceconf.py
+cat <<EOF > /home/aceproxy/aceconfig.py
 '''
 AceProxy configuration script
 '''
