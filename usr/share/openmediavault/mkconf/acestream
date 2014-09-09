@@ -57,9 +57,9 @@ class AceConfig(object):
     # Change this if you use remote Ace Stream Engine
     # Remember that by default Ace Stream Engine listens only
     # Local host, so start it with --bind-all parameter
-    acehost = '$(omv_config_get "//services/acestream/streamhost")'
+    acehost = '127.0.0.1'
     # Ace Stream Engine port (autodetect for Windows)
-    aceport = $(omv_config_get "//services/acestream/streamport")
+    aceport = 62062
     # Ace Stream age parameter (LT_13, 13_17, 18_24, 25_34, 35_44, 45_54,
     # 55_64, GT_65)
     aceage = AceConst.AGE_18_24
