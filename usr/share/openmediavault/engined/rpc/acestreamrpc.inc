@@ -108,14 +108,14 @@ class OMVRpcServiceAceStream extends OMVRpcServiceAbstract
 		
         // Update the configuration object. 
         $object = array(
-            enable"     => array_boolval($params, 'enable'),
-            proxyhost"  => $params['proxyhost'],
-            proxyport"  => intval($params['proxyport']),
-            vlcuse"     => array_boolval($params['vlcuse']),
-            vlchost"    => $params['vlchost'],
-            vlcport"    => intval($params['vlcport']),
-            vlcpass"    => $params['vlcpass'],
-            vlcoutport" => intval($params['vlcoutport']),
+            "enable"     => array_boolval($params, 'enable'),
+            "proxyhost"  => $params['proxyhost'],
+            "proxyport"  => intval($params['proxyport']),
+            "vlcuse"     => array_boolval($params['vlcuse']),
+            "vlchost"    => $params['vlchost'],
+            "vlcport"    => intval($params['vlcport']),
+            "vlcpass"    => $params['vlcpass'],
+            "vlcoutport" => intval($params['vlcoutport']),
         );
 
         if (false === $xmlConfig->replace($this->getXPath(), $object)) {
