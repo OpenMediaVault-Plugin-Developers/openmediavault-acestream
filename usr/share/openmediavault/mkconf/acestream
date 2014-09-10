@@ -5,8 +5,10 @@ set -e
 . /usr/share/openmediavault/scripts/helper-functions
 #Delete old pid file if it exists
 [ -f /var/run/acestream.pid ] && rm /var/run/acestream.pid
-#Stop the proxy
-	#Get proxy pid
+
+#Stop the proxy and engine
+
+#Get proxy pid
 	proxypid=$(ps aux | grep '[ace]http.py' | awk '{print $2}')
 	#Check if we got a pid, if so kill it
 	if test -n "$proxypid"; then
@@ -22,20 +24,20 @@ set -e
 		#Kill the engine tmux session
 		tmux kill-session -t aceengine
 	fi
- #Check status of the enable checkbox
- if [ "$(omv_config_get "//services/acestream/enable")" != "1" ]; then
-    #Checkbox is unticked. We can stop here`
-	exit 0
- fi
+#Check status of the enable checkbox
+	if [ "$(omv_config_get "//services/acestream/enable")" != "1" ]; then
+		#Checkbox is unticked. We can stop here`
+		exit 0
+	fi
  
- #Set default of the vlc variable
- vlcuse="False"
- #Check status of the "use vlc" checkbox
- if [ "$(omv_config_get "//services/acestream/vlcuse")" != "0" ]; then
-    #"use vlc" check box is ticked, Set the variable to True
-	vlcuse="True"
- fi
- #Write config file for ace proxy
+#Set default of the vlc variable
+    vlcuse="False"
+#Check status of the "use vlc" checkbox
+    if [ "$(omv_config_get "//services/acestream/vlcuse")" != "0" ]; then
+        #"use vlc" check box is ticked, Set the variable to True
+        vlcuse="True"
+    fi
+#Write config file for ace proxy
 cat <<EOF > /home/aceproxy/aceconfig.py
 '''
 AceProxy configuration script
@@ -203,4 +205,4 @@ class AceConfig(object):
 EOF
 
 #Start up the proxy and engine again
-/home/aceproxy/start
+    /home/aceproxy/start
