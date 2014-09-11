@@ -1,7 +1,16 @@
+openmediavault-acestream (1.0.2) stable; urgency=low
+
+  * Code fixes
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Thu, 11 Sep 2014 14:36:01 -0500
+
 openmediavault-acestream (1.0.1) stable; urgency=low
+
   * Code Fixes and tweaks
   
- -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Mon, 10 Sep 2014 13:23:00
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Mon, 10 Sep 2014 13:23:00 +0100
+
+openmediavault-acestream (1.0) stable; urgency=low
  
   * Initial release
 
