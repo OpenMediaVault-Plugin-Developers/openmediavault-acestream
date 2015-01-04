@@ -2,7 +2,7 @@ openmediavault-acestream (1.0.3) stable; urgency=low
 
   * Add custom debian/control field XB-Plugin-Section
 
- -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Fri, 12 Dec 2014 06:59:45 -0600
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Sun, 04 Jan 2015 17:19:29 -0600
 
 openmediavault-acestream (1.0.2) stable; urgency=low
 
